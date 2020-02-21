@@ -34,8 +34,13 @@ public class HashcodeApplication implements CommandLineRunner {
 
 		//Code here!!!
 
-		myFileOperator.setFileName("a_example.txt");
+		//myFileOperator.setFileName("a_example.txt");
+		//myFileOperator.setFileName("b_read_on.txt");
 
+		//myFileOperator.setFileName("c_incunabula.txt");
+		//myFileOperator.setFileName("d_tough_choices.txt");
+		//myFileOperator.setFileName("e_so_many_books.txt");
+		myFileOperator.setFileName("f_libraries_of_the_world.txt");
 
 		myFileOperator.readContent();
 
@@ -47,7 +52,7 @@ public class HashcodeApplication implements CommandLineRunner {
 
 		myFileOperator.setOutputModel(logic.getOutputModel());
 
-		myFileOperator.writeWordsToFile("output_example.txt");
+		myFileOperator.writeWordsToFile("output_f.txt");
 
 		LOG.info("EXECUTING : Pythoncular işiniz bitince bize yardım ediyorsunuz");
 

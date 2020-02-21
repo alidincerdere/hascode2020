@@ -75,7 +75,7 @@ public class DefaultFileOperator implements FileOperator {
 
 
 
-                System.out.println(sCurrentLine);
+                //System.out.println(sCurrentLine);
 
                 if(numOfRows == 0) {
                     //first line
@@ -116,11 +116,16 @@ public class DefaultFileOperator implements FileOperator {
 
                         library.setId((numOfRows-2)/2);
 
-                        library.setNumOfBooks(Integer.parseInt(libLine[0]));
-                        library.setSignUpDays(Integer.parseInt(libLine[1]));
-                        library.setShipPerDay(Integer.parseInt(libLine[2]));
+                        try {
+                            library.setNumOfBooks(Integer.parseInt(libLine[0]));
+                            library.setSignUpDays(Integer.parseInt(libLine[1]));
+                            library.setShipPerDay(Integer.parseInt(libLine[2]));
 
-                        libraryList.add(library);
+                            libraryList.add(library);
+                        } catch (Exception e) {
+                            System.out.println( "number of rows " + numOfRows);
+                            continue;
+                        }
 
                     } else {
 
@@ -142,6 +147,13 @@ public class DefaultFileOperator implements FileOperator {
 
                         library.setBooks(libBooks);
 
+
+                        int bookScore = 0;
+                        for (Book book: libBooks)
+                            bookScore += book.getScore();
+
+                        library.setLibraryScore(bookScore*library.getShipPerDay());
+
                     }
                 }
 
@@ -151,6 +163,8 @@ public class DefaultFileOperator implements FileOperator {
 
             inputModel.setLibraries(libraryList);
             inputModel.setBooks(bookList);
+
+
 
 
         } catch (FileNotFoundException e) {
